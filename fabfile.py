@@ -56,3 +56,13 @@ def release_patch_to_120(version, files):
 def release_patch_to_android(version, files):
     '''发布到android线上服务器'''
     release_patch (server_android, version, files)
+
+@task(alias='ios')
+def release_patch_to_ios(version, files):
+    '''发布到ios线上服务器'''
+    release_patch (server_ios, version, files)
+
+@task(alias='itest')
+def release_patch_to_itest(version, files):
+    '''发布到ios测试服务器'''
+    release_patch (server_itest, version, files)
