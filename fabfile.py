@@ -30,6 +30,14 @@ def put_to_ios():
 def put_to_itest():
     put_release_bin(server_itest)
 
+@task
+def put_to_tw_android():
+    put_release_bin(tw_server_android)
+
+@task
+def put_to_tw_ios():
+    put_release_bin(tw_server_ios)
+
 def release_patch(server, version, files):
     '''执行发布操作'''
     # 配置服务器
@@ -66,3 +74,13 @@ def release_patch_to_ios(version, files):
 def release_patch_to_itest(version, files):
     '''发布到ios测试服务器'''
     release_patch (server_itest, version, files)
+
+@task(alias='tw_ios')
+def release_patch_to_tw_ios(version, files):
+    '''发布到台湾ios服务器'''
+    release_patch (tw_server_ios, version, files)
+
+@task(alias='tw_android')
+def release_patch_to_tw_android(version, files):
+    '''发布到台湾android服务器'''
+    release_patch (tw_server_android, version, files)
